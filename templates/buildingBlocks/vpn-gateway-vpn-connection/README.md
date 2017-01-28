@@ -2,7 +2,7 @@
 
 You can use the vpn-gateway-vpn-connection template building block to deploy a [VPN Gateway](https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-about-vpngateways/) to an [Azure virtual network (VNet)](https://azure.microsoft.com/en-us/documentation/articles/resource-groups-networking/#virtual-network). It creates a virtual network gateway, an associated public IP address, and configures the settings related to your local network gateway.
 
-The block supports the creation of both conventional VPN and ExpressRoute gateway connections. Note that to deploy this building block you need to have a pre-existing VNet with a subnet named "GatewaySubnet".<!-- this is listed as a requirement on the VPN faq page, so I am assuming it's still a requirement with this building block--> If you don't have a VNet with a gateway subnet set up, you can use the [vnet-n-subnet](https://github.com/mspnp/template-building-blocks/tree/master/scenarios/vnet-n-subnet) building block to create one.
+The block supports the creation of both conventional VPN and ExpressRoute gateway connections. Note that to deploy this building block you need to have a pre-existing VNet with a subnet named "GatewaySubnet".<!-- this is listed as a requirement on the VPN faq page, so I am assuming it's still a requirement with this building block--> If you don't have a VNet with a gateway subnet set up, you can use the [vnet-n-subnet](https://github.com/devkeydet/template-building-blocks/tree/master/scenarios/vnet-n-subnet) building block to create one.
 
 
 
@@ -159,7 +159,7 @@ You can deploy a building block by using the Azure portal, PowerShell, or Azure 
 
 Note that the building block deployment process will require you store your parameters file in a location with a publicly available URI, which you provide during deployment.
 
-[![Click to deploy template on Azure](https://camo.githubusercontent.com/9285dd3998997a0835869065bb15e5d500475034/687474703a2f2f617a7572656465706c6f792e6e65742f6465706c6f79627574746f6e2e706e67 "Click to deploy template on Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Ftemplate-building-blocks%2Fmaster%2Fscenarios%2Fvpn-gateway-vpn-connection%2Fazuredeploy.json)  
+[![Click to deploy template on Azure](https://camo.githubusercontent.com/9285dd3998997a0835869065bb15e5d500475034/687474703a2f2f617a7572656465706c6f792e6e65742f6465706c6f79627574746f6e2e706e67 "Click to deploy template on Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdevkeydet%2Ftemplate-building-blocks%2Fmaster%2Fscenarios%2Fvpn-gateway-vpn-connection%2Fazuredeploy.json)  
 
 1. Click the above deployment button, the Azure portal will be opened.
 1. In the deployment's **TEMPLATEPARAMETERURI** parameter, specify the public URI where your parameters file is located. 
@@ -174,7 +174,7 @@ You can use the **New-AzureRmResourceGroupDeployment** to deploy the building bl
 2. Run the **New-AzureRmResourceGroupDeployment** cmdlet as shown below.
 ```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
-  -TemplateUri https://raw.githubusercontent.com/mspnp/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json 
+  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json 
   -templateParameterUriFromTemplate <URI of parameters file>
 ```
 
@@ -182,7 +182,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
 The cmdlet below deploys a vpn-gateway-vpn-connection building block to the **app1-rg** resource group using a parameter file hosted in Azure blob storage.
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/mspnp/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vpn.parameters.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vpn.parameters.json
 ```
 
 ### Azure CLI
@@ -194,7 +194,7 @@ To deploy the building block using a parameters file available from a URI:
 ```AzureCLI
 azure config mode arm
 azure group deployment create <Resource Group Name>
-  --template-uri https://raw.githubusercontent.com/mspnp/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json 
+  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json 
   -p "{\"templateParameterUri\":{\"value\":\"<parameters File Public URI>\"}}"
 ```
 
@@ -203,7 +203,7 @@ The command below deploys a vpn-gateway-vpn-connection building block to the **a
 
 ```AzureCLI
 azure config mode arm
-azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/mspnp/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/udr.parameters.json\"}}"
+azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/udr.parameters.json\"}}"
 ```
 
 ## Extending the building block

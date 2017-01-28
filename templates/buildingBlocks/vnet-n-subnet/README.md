@@ -2,8 +2,8 @@
 
 You can use the vnet-n-subnet building block to deploy an [Azure virtual network (VNet)](https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-overview/). This building block deploys only a virtual network, without any connected resources. The main difference between using this building block and the [Virtual Networks](https://azure.microsoft.com/en-us/documentation/articles/resource-groups-networking/#virtual-network) resource in the Network Resource Provider is that you cannot specify NSGs and UDRs in this block. These resources have a building block of their own, and do not require redefining a virtual network when created or modified. You can find these blocks here: 
 
-- [Network Security Groups](https://github.com/mspnp/template-building-blocks/tree/master/scenarios/networkSecurityGroups)
-- [User Defined Routes](https://github.com/mspnp/template-building-blocks/tree/master/scenarios/userDefinedRoutes)  
+- [Network Security Groups](https://github.com/devkeydet/template-building-blocks/tree/master/scenarios/networkSecurityGroups)
+- [User Defined Routes](https://github.com/devkeydet/template-building-blocks/tree/master/scenarios/userDefinedRoutes)  
 
 **Note** We chose to have separate building block for NSGs and UDRs so that these can be applied individually, without redefining the entire virtual network. Most deployments use extensions that require access to the Internet during deployment. By separating these blocks, you can deploy the VNet and your VMs, and then tighten security with NSGs and UDRs.
 
@@ -101,7 +101,7 @@ You can deploy a building block by using the Azure portal, PowerShell, or Azure 
 
 Note that the building block deployment process will require you store your parameters file in a location with a publicly available URI, which you provide during deployment.
 
-[![Click to deploy template on Azure](https://camo.githubusercontent.com/9285dd3998997a0835869065bb15e5d500475034/687474703a2f2f617a7572656465706c6f792e6e65742f6465706c6f79627574746f6e2e706e67 "Click to deploy template on Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Ftemplate-building-blocks%2Fmaster%2Fscenarios%2Fvnet-n-subnet%2Fazuredeploy.json)  
+[![Click to deploy template on Azure](https://camo.githubusercontent.com/9285dd3998997a0835869065bb15e5d500475034/687474703a2f2f617a7572656465706c6f792e6e65742f6465706c6f79627574746f6e2e706e67 "Click to deploy template on Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdevkeydet%2Ftemplate-building-blocks%2Fmaster%2Fscenarios%2Fvnet-n-subnet%2Fazuredeploy.json)  
 
 1. Click the above deployment button, the Azure portal will be opened.
 1. In the deployment's **TEMPLATEPARAMETERURI** parameter, specify the public URI where your parameters file is located. 
@@ -120,7 +120,7 @@ New-AzureRmResourceGroup -Location <Target Azure Region> -Name <Resource Group N
 3. Run the **New-AzureRmResourceGroupDeployment** cmdlet as shown below.
 ```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
-  -TemplateUri https://raw.githubusercontent.com/mspnp/template-building-blocks/master/scenarios/vnet-n-subnet/azuredeploy.json 
+  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vnet-n-subnet/azuredeploy.json 
   -templateParameterUriFromTemplate <URI of parameters file>
 ```
 
@@ -129,7 +129,7 @@ The cmdlet below creates a resource group named **app1-rg** in the **westus** lo
 
 ```PowerShell
 New-AzureRmResourceGroup -Location westus -Name app1-rg 
-New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/mspnp/template-building-blocks/master/scenarios/vnet-n-subnet/azuredeploy.json   -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vnet.parameters.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vnet-n-subnet/azuredeploy.json   -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vnet.parameters.json
 ```
 
 ### Azure CLI
@@ -147,7 +147,7 @@ To deploy the building block using a parameters file available from a URI:
 ```AzureCLI
 azure config mode arm
 azure group deployment create <Resource Group Name>
-  --template-uri https://raw.githubusercontent.com/mspnp/template-building-blocks/master/scenarios/vnet-n-subnet/azuredeploy.json 
+  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vnet-n-subnet/azuredeploy.json 
   -p "{\"templateParameterUri\":{\"value\":\"<parameters File Public URI>\"}}"
 ```
 
@@ -157,7 +157,7 @@ The command below creates a resource group named **app1-rg** in the **westus** l
 ```AzureCLI
 azure group create -n "app1-rg" -l "West US"
 azure config mode arm
-azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/mspnp/template-building-blocks/master/scenarios/vnet-n-subnet/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/vnet.parameters.json\"}}"
+azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vnet-n-subnet/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/vnet.parameters.json\"}}"
 ```
 
 ## Extending the building block
