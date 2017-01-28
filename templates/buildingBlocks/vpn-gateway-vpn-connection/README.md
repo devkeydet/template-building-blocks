@@ -182,7 +182,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
 The cmdlet below deploys a vpn-gateway-vpn-connection building block to the **app1-rg** resource group using a parameter file hosted in Azure blob storage.
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vpn.parameters.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.usgovcloudapi.net/building-block-params/vpn.parameters.json
 ```
 
 ### Azure CLI
@@ -203,7 +203,7 @@ The command below deploys a vpn-gateway-vpn-connection building block to the **a
 
 ```AzureCLI
 azure config mode arm
-azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/udr.parameters.json\"}}"
+azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/vpn-gateway-vpn-connection/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.usgovcloudapi.net/building-block-params/udr.parameters.json\"}}"
 ```
 
 ## Extending the building block

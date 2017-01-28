@@ -399,7 +399,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
 The cmdlet below deploys a multi-vm-n-nic-m-storage building block to the **app1-rg** resource group using a parameter file hosted in Azure blob storage.
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json   -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vms.parameters.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json   -templateParameterUriFromTemplate http://buildingblocksample.blob.core.usgovcloudapi.net/building-block-params/vms.parameters.json
 ```
 
 ### Azure CLI
@@ -420,7 +420,7 @@ The command below deploys a multi-vm-n-nic-m-storage building block to the **app
 
 ```AzureCLI
 azure config mode arm
-azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/vms.parameters.json\"}}"
+azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.usgovcloudapi.net/building-block-params/vms.parameters.json\"}}"
 ```
 
 ## Extending the building block
