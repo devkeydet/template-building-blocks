@@ -76,7 +76,7 @@ The **dmzSettings** parameter contains most of the configuration options used to
     ```json
     "virtualMachineSettings": {
       "count": 2,
-      "size": "Standard_DS2_v2",
+      "size": "Standard_DS2",
       "adminUsername": "testuser",
       "adminPassword": "AweS0me@PW",
       "sshPublicKey": "",
@@ -208,7 +208,7 @@ The following parameters file will create a public facing DMZ. It creates a load
           ],
           "virtualMachineSettings": {
             "count": 2,
-            "size": "Standard_DS2_v2",
+            "size": "Standard_DS2",
             "adminUsername": "testuser",
             "adminPassword": "AweS0me@PW",
             "sshPublicKey": "",

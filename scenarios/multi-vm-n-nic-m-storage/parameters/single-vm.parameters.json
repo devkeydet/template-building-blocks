@@ -6,7 +6,7 @@
       "value": {
         "namePrefix": "bb-dev-jb",
         "computerNamePrefix": "bb-dev-jb",
-        "size": "Standard_DS2_v2",
+        "size": "Standard_DS2",
         "osType": "windows",
         "adminUsername": "testuser",
         "adminPassword": "AweS0me@PW",
