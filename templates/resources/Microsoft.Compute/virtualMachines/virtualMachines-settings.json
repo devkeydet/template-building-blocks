@@ -143,8 +143,8 @@
                   },
                   "dataDisks": "[reference(variables('dataDiskSettingDeploymentName')).outputs.result.value]",
                   "diagnosticsStorageAccountName": "[parameters('context').storageAccounts.diagnostic]",
-                  "diagnosticsStorageUri": "[concat('http://', parameters('context').storageAccounts.diagnostic, '.blob.core.usgovcloudapi.net')]",
-                  //"diagnosticsStorageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.diagnostic)).primaryEndpoints.blob]",
+                  //"diagnosticsStorageUri": "[concat('http://', parameters('context').storageAccounts.diagnostic, '.blob.core.usgovcloudapi.net')]",
+                  "diagnosticsStorageUri": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.diagnostic, '2016-01-01')).primaryEndpoints.blob]",
                   "extensions": "[parameters('source').extensions]"
                 }
               ]
