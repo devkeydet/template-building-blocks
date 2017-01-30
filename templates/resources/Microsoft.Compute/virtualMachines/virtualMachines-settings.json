@@ -136,7 +136,8 @@
                   "osDisk": {
                     "name": "[concat(variables('vmName'), '-os.vhd')]",
                     //"vhd": { "uri": "[concat('http://', parameters('context').storageAccounts.vhd, '.blob.core.usgovcloudapi.net/', variables('storageAccountContainerName'), '/', concat(variables('vmName'), '-os.vhd'))]" },
-                    "vhd": { "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.vhd)).primaryEndpoints.blob, variables('storageAccountContainerName'), '/', concat(variables('vmName'), '-os.vhd'))]" },
+                    //"vhd": { "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.vhd)).primaryEndpoints.blob, variables('storageAccountContainerName'), '/', concat(variables('vmName'), '-os.vhd'))]" },
+                    "vhd": { "uri": "[concat(reference(concat(resourceGroup().id, '/providers/Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.vhd)).primaryEndpoints.blob, variables('storageAccountContainerName'), '/', concat(variables('vmName'), '-os.vhd'))]" },
                     "createOption": "FromImage",
                     "caching": "[parameters('source').osDisk.caching]"
                   },
