@@ -301,7 +301,7 @@ The cmdlet below creates a resource group named **app1-rg** in the **westus** lo
 
 ```PowerShell
 New-AzureRmResourceGroup -Location westus -Name app1-rg 
-New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/dmz/azuredeploy.json   -templateParameterUriFromTemplate http://buildingblocksample.blob.core.usgovcloudapi.net/building-block-params/vnet.parameters.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/dmz/azuredeploy.json   -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vnet.parameters.json
 ```
 
 ### Azure CLI
@@ -329,7 +329,7 @@ The command below creates a resource group named **app1-rg** in the **westus** l
 ```AzureCLI
 azure group create -n "app1-rg" -l "West US"
 azure config mode arm
-azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/dmz/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.usgovcloudapi.net/building-block-params/vnet.parameters.json\"}}"
+azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/dmz/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/vnet.parameters.json\"}}"
 ```
 
 ## Extending the building block
