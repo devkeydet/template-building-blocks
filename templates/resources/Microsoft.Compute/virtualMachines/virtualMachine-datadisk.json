@@ -23,7 +23,6 @@
         "name": "[concat('dataDisk', add(parameters('iteration'), 1))]",
         "diskSizeGB": "[parameters('source').diskSizeGB]",
         "lun": "[parameters('iteration')]",
-        //"vhd": { "uri": "[concat('http://', parameters('context').storageAccounts.vhd, '.blob.core.usgovcloudapi.net/vhds/', parameters('context').vmName, '-dataDisk', add(parameters('iteration'), 1), '.vhd')]" },
         "vhd": { "uri": "[parameters('vhdBlobUri')]" },
         "caching": "[parameters('source').caching]",
         "createOption": "[parameters('source').createOption]"

@@ -135,15 +135,12 @@
                   },
                   "osDisk": {
                     "name": "[concat(variables('vmName'), '-os.vhd')]",
-                    //"vhd": { "uri": "[concat('http://', parameters('context').storageAccounts.vhd, '.blob.core.usgovcloudapi.net/', variables('storageAccountContainerName'), '/', concat(variables('vmName'), '-os.vhd'))]" },
                     "vhd": { "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.vhd), '2016-01-01').primaryEndpoints.blob, variables('storageAccountContainerName'), '/', concat(variables('vmName'), '-os.vhd'))]" },
-                    //"vhd": { "uri": "[concat(reference(concat(resourceGroup().id, '/providers/Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.vhd)).primaryEndpoints.blob, variables('storageAccountContainerName'), '/', concat(variables('vmName'), '-os.vhd'))]" },
                     "createOption": "FromImage",
                     "caching": "[parameters('source').osDisk.caching]"
                   },
                   "dataDisks": "[reference(variables('dataDiskSettingDeploymentName')).outputs.result.value]",
                   "diagnosticsStorageAccountName": "[parameters('context').storageAccounts.diagnostic]",
-                  //"diagnosticsStorageUri": "[concat('http://', parameters('context').storageAccounts.diagnostic, '.blob.core.usgovcloudapi.net')]",
                   "diagnosticsStorageUri": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.diagnostic, '2016-01-01')).primaryEndpoints.blob]",
                   "extensions": "[parameters('source').extensions]"
                 }
