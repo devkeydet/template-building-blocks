@@ -141,7 +141,7 @@
                   },
                   "dataDisks": "[reference(variables('dataDiskSettingDeploymentName')).outputs.result.value]",
                   "diagnosticsStorageAccountName": "[parameters('context').storageAccounts.diagnostic]",
-                  "diagnosticsStorageUri": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.diagnostic, '2016-01-01')).primaryEndpoints.blob]",
+                  "diagnosticsStorageUri": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.diagnostic), '2016-01-01').primaryEndpoints.blob]",
                   "extensions": "[parameters('source').extensions]"
                 }
               ]
