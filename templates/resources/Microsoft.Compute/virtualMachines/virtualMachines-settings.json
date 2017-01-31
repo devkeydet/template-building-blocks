@@ -94,7 +94,8 @@
               "vnetName": "[parameters('context').vnetName]",
               "storageAccounts": "[parameters('context').storageAccounts]",
               "vmName": "[variables('vmName')]",
-              "vmIndex": "[add(parameters('iteration'), parameters('context').vmNamePostFixStartIndex)]"
+              "vmIndex": "[add(parameters('iteration'), parameters('context').vmNamePostFixStartIndex)]",
+              "blobEndpoint":"[reference(concat('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.vhd), '2016-01-01').primaryEndpoints.blob]"
             }
           },
           "mapperTemplateUri": { "value": "[uri(deployment().properties.templateLink.uri, 'virtualMachine-datadisk.json')]" },
