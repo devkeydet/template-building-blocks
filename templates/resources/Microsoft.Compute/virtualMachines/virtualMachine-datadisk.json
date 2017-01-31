@@ -15,7 +15,7 @@
     },
     "vhdBlobUri": {
       "type": "string",
-      "defaultValue": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.vhd, '2016-01-01')).primaryEndpoints.blob, 'vhds/', parameters('context').vmName, '-dataDisk', add(parameters('iteration'), 1), '.vhd')]"}
+      "defaultValue": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.vhd, '2016-01-01')).primaryEndpoints.blob]"}
   },
   "variables": {
     "instance": [
@@ -23,7 +23,7 @@
         "name": "[concat('dataDisk', add(parameters('iteration'), 1))]",
         "diskSizeGB": "[parameters('source').diskSizeGB]",
         "lun": "[parameters('iteration')]",
-        "vhd": { "uri": "[parameters('vhdBlobUri')]" },
+        "vhd": { "uri": "[concat(parameters('vhdBlobUri'), 'vhds/', parameters('context').vmName, '-dataDisk', add(parameters('iteration'), 1), '.vhd')]" },
         "caching": "[parameters('source').caching]",
         "createOption": "[parameters('source').createOption]"
       }
