@@ -15,7 +15,7 @@
     },
     "vhdBlobUri": {
       "type": "string",
-      "defaultValue": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.vhd), '2016-01-01').primaryEndpoints.blob]"}
+      "defaultValue": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('context').storageAccounts.vhd, '2016-01-01')).primaryEndpoints.blob, 'vhds/', parameters('context').vmName, '-dataDisk', add(parameters('iteration'), 1), '.vhd')]"}
   },
   "variables": {
     "instance": [
