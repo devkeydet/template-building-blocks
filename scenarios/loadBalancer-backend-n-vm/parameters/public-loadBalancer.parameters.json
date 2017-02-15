@@ -45,7 +45,7 @@
       "value": {
         "namePrefix": "bb-dev-web",
         "computerNamePrefix": "bb-dev-web",
-        "size": "Standard_DS2",
+        "size": "Standard_DS2_v2",
         "osType": "windows",
         "adminUsername": "testuser",
         "adminPassword": "AweS0me@PW",

@@ -159,7 +159,7 @@ The virtualMachinesSettings parameter contains the configuration settings the bl
 - **size**  
   Required. Size of the VMs to create. Note that this block uses [premium storage](https://azure.microsoft.com/en-us/documentation/articles/storage-premium-storage/), and only supports VM sizes that make use of premium storage. See [Sizes for virtual machines in Azure](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-sizes/) for more information.
 
-		"size": "Standard_DS4"
+		"size": "Standard_DS4_v2"
 
 - **osType**  
   Required. Type of operating system that will be installed ("linux" or "windows").
@@ -407,7 +407,7 @@ The following parameters file ...
 	      "value": {
 	        "namePrefix": "bb-dev-web",
 	        "computerNamePrefix": "bb-dev-web",
-	        "size": "Standard_DS2",
+	        "size": "Standard_DS2_v2",
 	        "osType": "windows",
 	        "adminUsername": "testuser",
 	        "adminPassword": "AweS0me@PW",
