@@ -269,7 +269,7 @@ Required. The osDisk property is an object allowing you to specify the caching s
 		}
 
 - **extensions**  
-Required. The extensions property is an array of one or more extension definition object, which allows you to specify any [VM Extensions](https://github.com/Azure/azure-content/blob/master/includes/virtual-machines-common-extensions-features.md) you want loaded on your new VMs. Each definition contains the following properties:
+Required. The extensions property is an array of one or more extension definition object, which allows you to specify any [VM Extensions](https://github.com/Azure/azure-content/blob/DoD/includes/virtual-machines-common-extensions-features.md) you want loaded on your new VMs. Each definition contains the following properties:
   - **name** - Required. Defines the display name of this extension. 
   - **publisher** - Required. Extension publisher name. 
   - **type** - Required. Extension type.
@@ -285,7 +285,7 @@ Required. The extensions property is an array of one or more extension definitio
 			  "type": "IaaSAntimalware",
 			  "typeHandlerVersion": "1.3",
 			  "autoUpgradeMinorVersion": true,
-			  "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+			  "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
 			  "settingsConfig": {
 			    "AntimalwareEnabled": true,
 			    "RealtimeProtectionEnabled": "false",
@@ -309,7 +309,7 @@ Required. The extensions property is an array of one or more extension definitio
 			  "type": "SymantecEndpointProtection",
 			  "typeHandlerVersion": "12.1",
 			  "autoUpgradeMinorVersion": true,
-			  "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+			  "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
 			  "settingsConfig": {
 			  },
 			  "protectedSettingsConfig": { }
@@ -444,13 +444,13 @@ The following parameters file ...
 	        "extensions": [
 	          {
 	            "name": "iis-config-ext",
-	            "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+	            "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
 	            "publisher": "Microsoft.Powershell",
 	            "type": "DSC",
 	            "typeHandlerVersion": "2.19",
 	            "autoUpgradeMinorVersion": true,
 	            "settingsConfig": {
-	              "modulesUrl": "https://raw.githubusercontent.com/devkeydet/reference-architectures/master/ra-multi-vm-extend/guidance-compute-multi-vm/extensions/windows/iisaspnet.ps1.zip",
+	              "modulesUrl": "https://raw.githubusercontent.com/devkeydet/reference-architectures/DoD/ra-multi-vm-extend/guidance-compute-multi-vm/extensions/windows/iisaspnet.ps1.zip",
 	              "configurationFunction": "iisaspnet.ps1\\iisaspnet"
 	            }
 	          }
@@ -503,13 +503,13 @@ You can use the **New-AzureRmResourceGroupDeployment** to deploy the building bl
 2. Run the **New-AzureRmResourceGroupDeployment** cmdlet as shown below.
 
 		New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
-		  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/loadBalancer-backend-n-vm/azuredeploy.json 
+		  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/loadBalancer-backend-n-vm/azuredeploy.json 
 		  -templateParameterUriFromTemplate <URI of parameters file>
 
 	**Example**  
 	The cmdlet below deploys a loadBalancer-backend-n-vm building block to the **app1-rg** resource group using a parameter file hosted in Azure blob storage.
 	
-		New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/loadBalancer-backend-n-vm/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/nsg.parameters.json
+		New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/loadBalancer-backend-n-vm/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/nsg.parameters.json
 
 ### Azure CLI
 
@@ -520,14 +520,14 @@ To deploy the building block using a parameters file available from a URI:
 	
 		azure config mode arm
 		azure group deployment create <Resource Group Name>
-		  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/loadBalancer-backend-n-vm/azuredeploy.json 
+		  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/loadBalancer-backend-n-vm/azuredeploy.json 
 		  -p "{\"templateParameterUri\":{\"value\":\"<parameters File Public URI>\"}}"
 
 	**Example**  
 	The command below deploys a loadBalancer-backend-n-vm building block to the **app1-rg** resource group using a parameter file hosted in Azure blob storage.
 	
 		azure config mode arm
-		azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/loadBalancer-backend-n-vm/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/nsg.parameters.json\"}}"
+		azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/loadBalancer-backend-n-vm/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/nsg.parameters.json\"}}"
 
 ## Extending the building block
 

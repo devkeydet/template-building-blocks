@@ -1,7 +1,7 @@
 # DMZ
 You can use the DMZ template building block to create a DMZ capable of allowing access to specific network resources while keeping the rest of your network safely isolated from external users. It can be used to secure both traffic between Azure and your on-premises datacenter, and Azure and the Internet. 
 
-The block can create its own subnets, set up a [load balancer](https://github.com/devkeydet/template-building-blocks/tree/master/scenarios/loadBalancer-backend-n-vm), and [add VMs](https://github.com/devkeydet/template-building-blocks/tree/master/scenarios/multi-vm-n-nic-m-storage) to handle the IP routing required for DMZ access restriction.
+The block can create its own subnets, set up a [load balancer](https://github.com/devkeydet/template-building-blocks/tree/DoD/scenarios/loadBalancer-backend-n-vm), and [add VMs](https://github.com/devkeydet/template-building-blocks/tree/DoD/scenarios/multi-vm-n-nic-m-storage) to handle the IP routing required for DMZ access restriction.
 
 **Note** This building block deploys the VMs used as network virtual appliances (NVAs) as Ubuntu servers with routing enabled. You need to use your own images, or images from the Azure marketplace, to deploy third party NVAs.
 
@@ -89,9 +89,9 @@ The **dmzSettings** parameter contains most of the configuration options used to
       }
     }
     ```
-  - **extensions** - Required. The extensions property is an array of one or more extension definition object, which allows you to specify any [VM Extensions](https://github.com/Azure/azure-content/blob/master/includes/virtual-machines-common-extensions-features.md) you want loaded on the DMZ VMs.  
+  - **extensions** - Required. The extensions property is an array of one or more extension definition object, which allows you to specify any [VM Extensions](https://github.com/Azure/azure-content/blob/DoD/includes/virtual-machines-common-extensions-features.md) you want loaded on the DMZ VMs.  
   
-      Note that although you can use the extensions mechanism to install and configure any number of VM extensions (as is possible in the [multi-vm-n-nic-m-storage](https://github.com/devkeydet/template-building-blocks/tree/master/scenarios/multi-vm-n-nic-m-storage) template building block), the primary purpose for it in this block is defining the iptables firewall that get deployed on the DMZ VMs.    
+      Note that although you can use the extensions mechanism to install and configure any number of VM extensions (as is possible in the [multi-vm-n-nic-m-storage](https://github.com/devkeydet/template-building-blocks/tree/DoD/scenarios/multi-vm-n-nic-m-storage) template building block), the primary purpose for it in this block is defining the iptables firewall that get deployed on the DMZ VMs.    
   
      Each definition contains the following properties:
     - **name** - Required. Defines the display name of this extension. 
@@ -99,7 +99,7 @@ The **dmzSettings** parameter contains most of the configuration options used to
     - **type** - Required. Extension type. If configuring IP Tables, should be
     - **typeHandlerVersion** - Required. Extensions version to use.
     - **autoUpgradeMinorVersion** - Required. Sets if the extension is allowed to upgrade automatically. (true / false)
-    - **settingsConfigMapperUri** - Required. URL of template used during the deployment process. Should always be "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json"
+    - **settingsConfigMapperUri** - Required. URL of template used during the deployment process. Should always be "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json"
     - **settingsConfig** - Required. Object containing extension specific settings. Can be empty.
     - **protectedSettingsConfig** - Required. Object containing extension specific settings that need to be encrypted. Can be empty. 
 
@@ -113,10 +113,10 @@ The **dmzSettings** parameter contains most of the configuration options used to
         "type": "CustomScriptForLinux",
         "typeHandlerVersion": "1.5",
         "autoUpgradeMinorVersion": true,
-        "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+        "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
         "settingsConfig": {
           "fileUris": [
-            "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/linux/enable-iptables-routes/enable-iptables-routes.sh"
+            "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/linux/enable-iptables-routes/enable-iptables-routes.sh"
           ],
           "commandToExecute": "bash enable-iptables-routes.sh public 10.0.1.100"
         },
@@ -226,10 +226,10 @@ The following parameters file will create a public facing DMZ. It creates a load
                 "type": "CustomScriptForLinux",
                 "typeHandlerVersion": "1.5",
                 "autoUpgradeMinorVersion": true,
-                "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+                "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
                 "settingsConfig": {
                   "fileUris": [
-                    "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/linux/enable-iptables-routes/enable-iptables-routes.sh"
+                    "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/linux/enable-iptables-routes/enable-iptables-routes.sh"
                   ],
                   "commandToExecute": "bash enable-iptables-routes.sh public 10.0.1.100"
                 },
@@ -292,7 +292,7 @@ New-AzureRmResourceGroup -Location <Target Azure Region> -Name <Resource Group N
 3. Run the **New-AzureRmResourceGroupDeployment** cmdlet as shown below.
 ```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
-  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/dmz/azuredeploy.json 
+  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/dmz/azuredeploy.json 
   -templateParameterUriFromTemplate <URI of parameters file>
 ```
 
@@ -301,7 +301,7 @@ The cmdlet below creates a resource group named **app1-rg** in the **westus** lo
 
 ```PowerShell
 New-AzureRmResourceGroup -Location westus -Name app1-rg 
-New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/dmz/azuredeploy.json   -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vnet.parameters.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/dmz/azuredeploy.json   -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vnet.parameters.json
 ```
 
 ### Azure CLI
@@ -319,7 +319,7 @@ To deploy the building block using a parameters file available from a URI:
 ```AzureCLI
 azure config mode arm
 azure group deployment create <Resource Group Name>
-  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/dmz/azuredeploy.json 
+  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/dmz/azuredeploy.json 
   -p "{\"templateParameterUri\":{\"value\":\"<parameters File Public URI>\"}}"
 ```
 
@@ -329,7 +329,7 @@ The command below creates a resource group named **app1-rg** in the **westus** l
 ```AzureCLI
 azure group create -n "app1-rg" -l "West US"
 azure config mode arm
-azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/dmz/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/vnet.parameters.json\"}}"
+azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/dmz/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/vnet.parameters.json\"}}"
 ```
 
 ## Extending the building block

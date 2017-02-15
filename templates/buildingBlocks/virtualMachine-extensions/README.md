@@ -2,7 +2,7 @@
 
 You can use the virtualMachine-extensions template building block to deploy one or more [virtual machine extensions](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-extensions-features/) to an Azure virtual machine.
 
-Extensions can also be configured when creating VMs when using the [multi-vm-n-nic-m-storage](https://github.com/devkeydet/template-building-blocks/tree/master/scenarios/multi-vm-n-nic-m-storage) building block, using the same **extensions** parameter structure used in this block.
+Extensions can also be configured when creating VMs when using the [multi-vm-n-nic-m-storage](https://github.com/devkeydet/template-building-blocks/tree/DoD/scenarios/multi-vm-n-nic-m-storage) building block, using the same **extensions** parameter structure used in this block.
 
 
 ## Parameters
@@ -24,7 +24,7 @@ Required. The extensions property is an array of one or more extension definitio
   - **type** - Required. Extension type.
   - **typeHandlerVersion** - Required. Extensions version to use.
   - **autoUpgradeMinorVersion** - Required. Sets if the extension is allowed to upgrade automatically. (true / false)
-  - **settingsConfigMapperUri** - Required. URL of template used during the depoyment process. Should always be "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json" 
+  - **settingsConfigMapperUri** - Required. URL of template used during the depoyment process. Should always be "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json" 
   - **settingsConfig** - Required. Object containing extension specific settings. Can be empty.   
   - **protectedSettingsConfig** - Required. Object containing extension specific settings that need to be encrypted. Can be empty.
   
@@ -36,7 +36,7 @@ Required. The extensions property is an array of one or more extension definitio
       "type": "IaaSAntimalware",
       "typeHandlerVersion": "1.3",
       "autoUpgradeMinorVersion": true,
-      "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+      "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
       "settingsConfig": {
         "AntimalwareEnabled": true,
         "RealtimeProtectionEnabled": "false",
@@ -60,7 +60,7 @@ Required. The extensions property is an array of one or more extension definitio
       "type": "SymantecEndpointProtection",
       "typeHandlerVersion": "12.1",
       "autoUpgradeMinorVersion": true,
-      "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+      "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
       "settingsConfig": {
       },
       "protectedSettingsConfig": { }
@@ -88,7 +88,7 @@ The following parameters file assumes we have three VMs in our resource group na
               "type": "IaaSAntimalware",
               "typeHandlerVersion": "1.3",
               "autoUpgradeMinorVersion": true,
-              "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
               "settingsConfig": {
                 "AntimalwareEnabled": true,
                 "RealtimeProtectionEnabled": "false",
@@ -112,7 +112,7 @@ The following parameters file assumes we have three VMs in our resource group na
               "type": "SymantecEndpointProtection",
               "typeHandlerVersion": "12.1",
               "autoUpgradeMinorVersion": true,
-              "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
               "settingsConfig": {
               },
               "protectedSettingsConfig": { }
@@ -128,7 +128,7 @@ The following parameters file assumes we have three VMs in our resource group na
               "type": "IaaSAntimalware",
               "typeHandlerVersion": "1.3",
               "autoUpgradeMinorVersion": true,
-              "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+              "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
               "settingsConfig": {
                 "AntimalwareEnabled": true,
                 "RealtimeProtectionEnabled": "false",
@@ -186,7 +186,7 @@ You can use the **New-AzureRmResourceGroupDeployment** to deploy the building bl
 2. Run the **New-AzureRmResourceGroupDeployment** cmdlet as shown below.
 ```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
-  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/virtualMachine-extensions/azuredeploy.json 
+  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/virtualMachine-extensions/azuredeploy.json 
   -templateParameterUriFromTemplate <URI of parameters file>
 ```
 
@@ -194,7 +194,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
 The cmdlet below deploys a virtualMachine-extensions building block to the **app1-rg** resource group using a parameter file hosted in Azure blob storage.
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/virtualMachine-extensions/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vmext.parameters.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/virtualMachine-extensions/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vmext.parameters.json
 ```
 
 ### Azure CLI
@@ -206,7 +206,7 @@ To deploy the building block using a parameters file available from a URI:
 ```AzureCLI
 azure config mode arm
 azure group deployment create <Resource Group Name>
-  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/virtualMachine-extensions/azuredeploy.json 
+  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/virtualMachine-extensions/azuredeploy.json 
   -p "{\"templateParameterUri\":{\"value\":\"<parameters File Public URI>\"}}"
 ```
 
@@ -215,7 +215,7 @@ The command below deploys a virtualMachine-extensions building block to the **ap
 
 ```AzureCLI
 azure config mode arm
-azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/virtualMachine-extensions/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/vmext.parameters.json\"}}"
+azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/virtualMachine-extensions/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/vmext.parameters.json\"}}"
 ```
 
 ## Extending the building block

@@ -1,6 +1,6 @@
 # multi-vm-n-nic-m-storage
 
-You can use the multi-vm-n-nic-m-storage template building block to create one or more [virtual machines (VMs)](https://azure.microsoft.com/en-us/documentation/services/virtual-machines/) and deploy them to an [Azure virtual network (VNet)](https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-overview/). If you don't have a VNet set up, you can use the [vnet-n-subnet](https://github.com/devkeydet/template-building-blocks/tree/master/scenarios/vnet-n-subnet) building block to create one.
+You can use the multi-vm-n-nic-m-storage template building block to create one or more [virtual machines (VMs)](https://azure.microsoft.com/en-us/documentation/services/virtual-machines/) and deploy them to an [Azure virtual network (VNet)](https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-overview/). If you don't have a VNet set up, you can use the [vnet-n-subnet](https://github.com/devkeydet/template-building-blocks/tree/DoD/scenarios/vnet-n-subnet) building block to create one.
 
 In addition to defining the OS and Storage configuration of newly created VMs, this block allows you to create multiple [network interfaces (NICs)](https://azure.microsoft.com/en-us/documentation/articles/resource-groups-networking/#nic) and configure [VM extensions](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-extensions-features/) for your VMs. It also allows you to create a new availability set for you machines, or use an existing one.
 
@@ -137,7 +137,7 @@ Required. The osDisk property is an object allowing you to specify the caching s
     }
   ```
 - **extensions**  
-Required. The extensions property is an array of one or more extension definition objects, which allows you to specify any [VM Extensions](https://github.com/Azure/azure-content/blob/master/includes/virtual-machines-common-extensions-features.md) you want loaded on your new VMs.  
+Required. The extensions property is an array of one or more extension definition objects, which allows you to specify any [VM Extensions](https://github.com/Azure/azure-content/blob/DoD/includes/virtual-machines-common-extensions-features.md) you want loaded on your new VMs.  
 
   For details about configuring, see the [virtualMachine-extensions template building block]() which uses the same **extensions** property structure.
 
@@ -148,7 +148,7 @@ Each defintion contains the following properties:
   - **type** - Required. Extension type.
   - **typeHandlerVersion** - Required. Extensions version to use.
   - **autoUpgradeMinorVersion** - Required. Sets if the extension is allowed to upgrade automatically. (true / false) 
-  - **settingsConfigMapperUri** - URL of template used during the depoyment process. Should always be "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json"  
+  - **settingsConfigMapperUri** - URL of template used during the depoyment process. Should always be "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json"  
   - **settingsConfig** - Required. Object containing extension specific settings. Can be empty.   
   - **protectedSettingsConfig** - Required. Object containing extension specific settings that need to be encrypted. Can be empty.
   ```json
@@ -159,7 +159,7 @@ Each defintion contains the following properties:
       "type": "IaaSAntimalware",
       "typeHandlerVersion": "1.3",
       "autoUpgradeMinorVersion": true,
-      "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+      "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
       "settingsConfig": {
         "AntimalwareEnabled": true,
         "RealtimeProtectionEnabled": "false",
@@ -183,7 +183,7 @@ Each defintion contains the following properties:
       "type": "SymantecEndpointProtection",
       "typeHandlerVersion": "12.1",
       "autoUpgradeMinorVersion": true,
-      "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+      "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
       "settingsConfig": {
       },
       "protectedSettingsConfig": { }
@@ -310,7 +310,7 @@ The following parameters file creates two VMs named **bb-dev-vm1** and **bb-dev-
             "type": "IaaSAntimalware",
             "typeHandlerVersion": "1.3",
             "autoUpgradeMinorVersion": true,
-            "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+            "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
             "settingsConfig": {
               "AntimalwareEnabled": true,
               "RealtimeProtectionEnabled": "false",
@@ -334,7 +334,7 @@ The following parameters file creates two VMs named **bb-dev-vm1** and **bb-dev-
             "type": "SymantecEndpointProtection",
             "typeHandlerVersion": "12.1",
             "autoUpgradeMinorVersion": true,
-            "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+            "settingsConfigMapperUri": "https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
             "settingsConfig": {
             },
             "protectedSettingsConfig": { }
@@ -391,7 +391,7 @@ You can use the **New-AzureRmResourceGroupDeployment** to deploy the building bl
 2. Run the **New-AzureRmResourceGroupDeployment** cmdlet as shown below.
 ```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
-  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json 
+  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json 
   -templateParameterUriFromTemplate <URI of parameters file>
 ```
 
@@ -399,7 +399,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
 The cmdlet below deploys a multi-vm-n-nic-m-storage building block to the **app1-rg** resource group using a parameter file hosted in Azure blob storage.
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json   -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vms.parameters.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json   -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/vms.parameters.json
 ```
 
 ### Azure CLI
@@ -411,7 +411,7 @@ To deploy the building block using a parameters file available from a URI:
 ```AzureCLI
 azure config mode arm
 azure group deployment create <Resource Group Name>
-  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json 
+  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json 
   -p "{\"templateParameterUri\":{\"value\":\"<Parameters File Public URI>\"}}"
 ```
 
@@ -420,7 +420,7 @@ The command below deploys a multi-vm-n-nic-m-storage building block to the **app
 
 ```AzureCLI
 azure config mode arm
-azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/vms.parameters.json\"}}"
+azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/multi-vm-n-nic-m-storage/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/vms.parameters.json\"}}"
 ```
 
 ## Extending the building block

@@ -2,7 +2,7 @@
 
 You can use the userDefinedRoutes template building block to deploy one or more [User Defined Routes (UDRs)](https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-udr-overview/) to an [Azure virtual network (VNet)](https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-overview/). 
 
-Unlike in the Network Resource Provider, creating and modifying UDRs using this block is handled independently of creating your virtual network. As a result, this building block requires a pre-existing VNet and resource group. If you don't have a VNet set up, you can use the [vnet-n-subnet](https://github.com/devkeydet/template-building-blocks/tree/master/scenarios/vnet-n-subnet) building block to create one.
+Unlike in the Network Resource Provider, creating and modifying UDRs using this block is handled independently of creating your virtual network. As a result, this building block requires a pre-existing VNet and resource group. If you don't have a VNet set up, you can use the [vnet-n-subnet](https://github.com/devkeydet/template-building-blocks/tree/DoD/scenarios/vnet-n-subnet) building block to create one.
 
 **Note** We chose to have separate building block for UDRs so that these can be applied individually, without redefining the entire virtual network. Most deployments use extensions that require access to the Internet during deployment. By separating these blocks, you can deploy the VNet and your VMs, and then tighten security with UDRs.
 
@@ -149,7 +149,7 @@ You can use the **New-AzureRmResourceGroupDeployment** to deploy the building bl
 2. Run the **New-AzureRmResourceGroupDeployment** cmdlet as shown below.
 ```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
-  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/userDefinedRoutes/azuredeploy.json 
+  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/userDefinedRoutes/azuredeploy.json 
   -templateParameterUriFromTemplate <URI of parameters file>
 ```
 
@@ -157,7 +157,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
 The cmdlet below deploys a userDefinedRoutes building block to the **app1-rg** resource group using a parameter file hosted in Azure blob storage.
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/userDefinedRoutes/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/udr.parameters.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/userDefinedRoutes/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/udr.parameters.json
 ```
 
 ### Azure CLI
@@ -169,7 +169,7 @@ To deploy the building block using a parameters file available from a URI:
 ```AzureCLI
 azure config mode arm
 azure group deployment create <Resource Group Name>
-  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/userDefinedRoutes/azuredeploy.json 
+  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/userDefinedRoutes/azuredeploy.json 
   -p "{\"templateParameterUri\":{\"value\":\"<parameters File Public URI>\"}}"
 ```
 
@@ -178,7 +178,7 @@ The command below deploys a userDefinedRoutes building block to the **app1-rg** 
 
 ```AzureCLI
 azure config mode arm
-azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/userDefinedRoutes/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/udr.parameters.json\"}}"
+azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/userDefinedRoutes/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/udr.parameters.json\"}}"
 ```
 
 ## Extending the building block

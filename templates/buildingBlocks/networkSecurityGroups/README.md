@@ -6,7 +6,7 @@ The default NSG rules enable full incoming and outgoing access within the VNet. 
 
 NSGs must be associated with at least one subnet on your VNet. You can also apply NSGs to specific Network Interfaces (NICs) within a subnet, although this is optional.
 
-Unlike in the Network Resource Provider, creating and modifying NSGs is handled independently. As a result, you'll need a pre-existing VNet, along with any subnets you need to associate NSGs with. If you don't have a VNet set up, you can use the [vnet-n-subnet](https://github.com/devkeydet/template-building-blocks/tree/master/scenarios/vnet-n-subnet) building block to create one.
+Unlike in the Network Resource Provider, creating and modifying NSGs is handled independently. As a result, you'll need a pre-existing VNet, along with any subnets you need to associate NSGs with. If you don't have a VNet set up, you can use the [vnet-n-subnet](https://github.com/devkeydet/template-building-blocks/tree/DoD/scenarios/vnet-n-subnet) building block to create one.
 
 **Note** We chose to have separate building block for NSGs so that these can be applied individually, without redefining the entire virtual network. Most deployments use extensions that require access to the Internet during deployment. By separating these blocks, you can deploy the VNet and your VMs, and then tighten security with NSGs.
 
@@ -214,7 +214,7 @@ You can use the **New-AzureRmResourceGroupDeployment** to deploy the building bl
 2. Run the **New-AzureRmResourceGroupDeployment** cmdlet as shown below.
 ```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
-  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/networkSecurityGroups/azuredeploy.json 
+  -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/networkSecurityGroups/azuredeploy.json 
   -templateParameterUriFromTemplate <URI of parameters file>
 ```
 
@@ -222,7 +222,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group Name>
 The cmdlet below deploys a networkSecurityGroups building block to the **app1-rg** resource group using a parameter file hosted in Azure blob storage.
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/networkSecurityGroups/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/nsg.parameters.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName app1-rg -TemplateUri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/networkSecurityGroups/azuredeploy.json -templateParameterUriFromTemplate http://buildingblocksample.blob.core.windows.net/building-block-params/nsg.parameters.json
 ```
 
 ### Azure CLI
@@ -234,7 +234,7 @@ To deploy the building block using a parameters file available from a URI:
 ```AzureCLI
 azure config mode arm
 azure group deployment create <Resource Group Name>
-  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/networkSecurityGroups/azuredeploy.json 
+  --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/networkSecurityGroups/azuredeploy.json 
   -p "{\"templateParameterUri\":{\"value\":\"<parameters File Public URI>\"}}"
 ```
 
@@ -243,7 +243,7 @@ The command below deploys a networkSecurityGroups building block to the **app1-r
 
 ```AzureCLI
 azure config mode arm
-azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/master/scenarios/networkSecurityGroups/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/nsg.parameters.json\"}}"
+azure group deployment create app1-rg --template-uri https://raw.githubusercontent.com/devkeydet/template-building-blocks/DoD/scenarios/networkSecurityGroups/azuredeploy.json -p "{\"templateParameterUri\":{\"value\":\"http://buildingblocksample.blob.core.windows.net/building-block-params/nsg.parameters.json\"}}"
 ```
 
 ## Extending the building block
